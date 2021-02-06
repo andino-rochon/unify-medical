@@ -301,7 +301,7 @@ class RegistrationPage
     // by the user and act accordingly
     public void actionPerformed(ActionEvent e)
     {
-        else if (e.getSource() == sub) {
+      if (e.getSource() == sub) {
             if (metReq ==true) {
                 if (term.isSelected()) {
                         res.setText("Registration Successfully..");
