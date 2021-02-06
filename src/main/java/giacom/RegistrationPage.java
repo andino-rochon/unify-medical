@@ -76,7 +76,7 @@ class RegistrationPage
         setBounds(300, 90, 900, 1000);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
-        metRep = false;
+        metReq = true;
         c = getContentPane();
         c.setLayout(null);
 
@@ -97,6 +97,9 @@ class RegistrationPage
         tFname.setSize(190, 20);
         tFname.setLocation(200, 100);
         c.add(tFname);
+        if (tFname.getText().equals("")) {
+            metReq=false;
+        }
 
         Lname = new JLabel("Last Name");
         Lname.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -109,6 +112,9 @@ class RegistrationPage
         tLname.setSize(190, 20);
         tLname.setLocation(550, 100);
         c.add(tLname);
+        if (tLname.getText().equals("")) {
+            metReq=false;
+        }
 
         addressL1 = new JLabel("Address Line 1");
         addressL1.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -121,6 +127,9 @@ class RegistrationPage
         tAddressL1.setSize(640, 20);
         tAddressL1.setLocation(100, 160);
         c.add(tAddressL1);
+        if (tAddressL1.getText().equals("")) {
+            metReq=false;
+        }
 
         addressL2 = new JLabel("Address Line 2");
         addressL2.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -145,6 +154,9 @@ class RegistrationPage
         tcity.setSize(100, 20);
         tcity.setLocation(100, 280);
         c.add(tcity);
+        if (tcity.getText().equals("")) {
+            metReq=false;
+        }
 
         state = new JLabel("State/Province");
         state.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -157,6 +169,9 @@ class RegistrationPage
         tstate.setSize(100, 20);
         tstate.setLocation(100, 340);
         c.add(tstate);
+        if (tstate.getText().equals("")) {
+            metReq=false;
+        }
 
         zipC = new JLabel("Zip/Postal Code");
         zipC.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -169,6 +184,9 @@ class RegistrationPage
         tzipC.setSize(100, 20);
         tzipC.setLocation(100, 400);
         c.add(tzipC);
+        if (tzipC.getText().equals("")) {
+            metReq=false;
+        }
 
         gender = new JLabel("Gender");
         gender.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -230,6 +248,9 @@ class RegistrationPage
         tusername.setSize(290, 20);
         tusername.setLocation(450, 520);
         c.add(tusername);
+        if (tusername.getText().equals("")) {
+            metReq=false;
+        }
 
         password = new JLabel("Password:");
         password.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -242,6 +263,9 @@ class RegistrationPage
         tpassword.setSize(290, 20);
         tpassword.setLocation(200, 560);
         c.add(tpassword);
+        if (tpassword.getText().equals("")) {
+            metReq=false;
+        }
 
         term = new JCheckBox("Accept Terms And Conditions.");
         term.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -277,14 +301,18 @@ class RegistrationPage
     // by the user and act accordingly
     public void actionPerformed(ActionEvent e)
     {
-        if (e.getSource() == sub) {
-            if (term.isSelected()) {
-                res.setText("Registration Successfully..");
-            }
-            else {
-                res.setText("Please accept the"
-                        + " terms & conditions.");
-            }
+        else if (e.getSource() == sub) {
+            if (metReq ==true) {
+                if (term.isSelected()) {
+                        res.setText("Registration Successfully..");
+                }
+                else {
+                        res.setText("Please accept the"
+                                + " terms & conditions.");
+                }
+           } else {
+                res.setText("Please answer all fields(Address Line 2 is optional)");
+           }
         }
 
         else if (e.getSource() == reset) {
