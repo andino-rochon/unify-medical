@@ -6,6 +6,8 @@ package giacom;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.FileWriter;
+import java.io.IOException;
 
 class RegistrationPage extends JFrame implements ActionListener {
 
@@ -321,6 +323,7 @@ class RegistrationPage extends JFrame implements ActionListener {
             } else{
                 if (term.isSelected()) {
                     res.setText("Registration was Successful");
+                    saveUserData();
                 } else {
                     res.setText("Please accept the terms & conditions.");
                 }
@@ -342,6 +345,32 @@ class RegistrationPage extends JFrame implements ActionListener {
             month.setSelectedIndex(0);
             year.setSelectedIndex(0);
 
+        }
+    }
+
+    public void saveUserData(){
+        name = tFname.getText().toString() + " " + tLname.getText().toString();
+        streetName = tAddressL1.getText().toString();
+        citStatZip = tcity.getText().toString() + "," + tstate.getText().toString() + " " + tzipC.getText().toString();
+        datBirth = month.getSelectedItem().toString() + " " + date.getSelectedItem().toString() + " " +
+                year.getSelectedItem().toString();
+        usrName = tusername.getText().toString();
+        pass = tpassword.getText().toString();
+        if (male.isSelected()) {
+            gend = "Male";
+        } else if (female.isSelected()) {
+            gend = "Female";
+        } else {
+            gend = "Other";
+        }
+        try {
+            FileWriter writer = new FileWriter("UserData.txt", true);
+            writer.write("\r\n");
+            writer.write(usrName + ":" + pass + ":" + name + ":" + datBirth + ":" + streetName +
+                    ":" + citStatZip + ":" + gend + ";");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
