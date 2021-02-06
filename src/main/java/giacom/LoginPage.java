@@ -97,6 +97,8 @@ public class LoginPage extends JFrame implements ActionListener {
             } else {
                 //need to check for valid login info
                 res.setText("Login successful");
+                setVisible(false);
+                DashBoard db = new DashBoard();
             }
         } else if (e.getSource() == register) {
             RegistrationPage f = new RegistrationPage();

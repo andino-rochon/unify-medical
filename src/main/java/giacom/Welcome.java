@@ -5,7 +5,6 @@ public class Welcome {
             throws Exception
     {
         LoginPage l = new LoginPage();
-        RequestRecordsPage rr = new RequestRecordsPage();
-        DashBoard db = new DashBoard();
+        //RequestRecordsPage rr = new RequestRecordsPage();
     }
 }
