@@ -29,6 +29,7 @@ class RegistrationPage extends JFrame implements ActionListener {
     private JLabel gender;
     private JRadioButton male;
     private JRadioButton female;
+    private JRadioButton otherGen;
     private ButtonGroup gengp;
     private JLabel dob;
     private JComboBox date;
@@ -42,7 +43,16 @@ class RegistrationPage extends JFrame implements ActionListener {
     private JButton sub;
     private JButton reset;
     private JLabel res;
-    private boolean metReq;
+
+    public String name;
+    public String streetName;
+    public String citStatZip;
+    public String gend;
+    public String datBirth;
+    public String usrName;
+    public String pass;
+    public User u;
+    // public int age; ->calculate age from datBirth
 
     private String dates[]
             = { "1", "2", "3", "4", "5",
@@ -67,13 +77,11 @@ class RegistrationPage extends JFrame implements ActionListener {
 
     // constructor, to initialize the components
     // with default values.
-    public RegistrationPage()
-    {
+    public RegistrationPage() {
         setTitle("Registration Form");
         setBounds(300, 90, 900, 1000);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
-        metReq = true;
         c = getContentPane();
         c.setLayout(null);
 
@@ -108,6 +116,7 @@ class RegistrationPage extends JFrame implements ActionListener {
         tLname.setLocation(550, 100);
         c.add(tLname);
 
+        name = tFname.getText() + " " + tLname.getText();
 
         addressL1 = new JLabel("Address Line 1");
         addressL1.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -121,6 +130,7 @@ class RegistrationPage extends JFrame implements ActionListener {
         tAddressL1.setLocation(100, 160);
         c.add(tAddressL1);
 
+        streetName = tAddressL1.getText();
 
         addressL2 = new JLabel("Address Line 2");
         addressL2.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -172,6 +182,7 @@ class RegistrationPage extends JFrame implements ActionListener {
         tzipC.setLocation(100, 400);
         c.add(tzipC);
 
+        citStatZip = tcity.getText() + "," + tstate.getText() + " " + tzipC.getText();
 
         gender = new JLabel("Gender");
         gender.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -193,9 +204,25 @@ class RegistrationPage extends JFrame implements ActionListener {
         female.setLocation(275, 440);
         c.add(female);
 
+        otherGen = new JRadioButton("Other");
+        otherGen.setFont(new Font("Arial", Font.PLAIN, 15));
+        otherGen.setSelected(true);
+        otherGen.setSize(75, 20);
+        otherGen.setLocation(350, 440);
+        c.add(otherGen);
+
         gengp = new ButtonGroup();
         gengp.add(male);
         gengp.add(female);
+        gengp.add(otherGen);
+
+        if (male.isSelected()) {
+            gend = "Male";
+        } else if (female.isSelected()) {
+            gend = "Female";
+        } else {
+            gend = "Other";
+        }
 
         dob = new JLabel("Date of Birth");
         dob.setFont(new Font("Arial", Font.PLAIN, 18));
@@ -221,6 +248,8 @@ class RegistrationPage extends JFrame implements ActionListener {
         year.setLocation(360, 480);
         c.add(year);
 
+        datBirth = month.toString() + " " + date.toString() + " " + year.toString();
+
         //username is the email address
         username = new JLabel("Username (Enter your email address):");
         username.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -234,6 +263,7 @@ class RegistrationPage extends JFrame implements ActionListener {
         tusername.setLocation(450, 520);
         c.add(tusername);
 
+        usrName = tusername.getText();
 
         password = new JLabel("Password:");
         password.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -247,7 +277,8 @@ class RegistrationPage extends JFrame implements ActionListener {
         tpassword.setLocation(200, 560);
         c.add(tpassword);
 
-
+        pass = tpassword.getText();
+        u = new User(usrName, pass, name, datBirth, streetName, citStatZip,gend);
         term = new JCheckBox("Accept Terms And Conditions.");
         term.setFont(new Font("Arial", Font.PLAIN, 15));
         term.setSize(250, 20);
@@ -310,7 +341,7 @@ class RegistrationPage extends JFrame implements ActionListener {
             date.setSelectedIndex(0);
             month.setSelectedIndex(0);
             year.setSelectedIndex(0);
-            metReq = true;
+
         }
     }
 }
