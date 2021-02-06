@@ -1,4 +1,5 @@
 package giacom;
+
 // Java program to implement
 // a Simple Registration Form
 // using Java Swing
@@ -40,14 +41,10 @@ class RegistrationPage
     private JTextField tusername;
     private JLabel password;
     private JTextField tpassword;
-    private JLabel add;
-    private JTextArea tadd;
     private JCheckBox term;
     private JButton sub;
     private JButton reset;
-    private JTextArea tout;
     private JLabel res;
-    private JTextArea resadd;
     private boolean metReq;
 
     private String dates[]
@@ -246,20 +243,6 @@ class RegistrationPage
         tpassword.setLocation(200, 560);
         c.add(tpassword);
 
-
- /*
-            add = new JLabel("Address");
-            add.setFont(new Font("Arial", Font.PLAIN, 20));
-            add.setSize(100, 20);
-            add.setLocation(100, 300);
-            c.add(add);
-            tadd = new JTextArea();
-            tadd.setFont(new Font("Arial", Font.PLAIN, 15));
-            tadd.setSize(200, 75);
-            tadd.setLocation(200, 300);
-            tadd.setLineWrap(true);
-            c.add(tadd);
-*/
         term = new JCheckBox("Accept Terms And Conditions.");
         term.setFont(new Font("Arial", Font.PLAIN, 15));
         term.setSize(250, 20);
@@ -285,26 +268,7 @@ class RegistrationPage
         res.setSize(500, 25);
         res.setLocation(100, 650);
         c.add(res);
-
-
-
-
-/*
-            tout = new JTextArea();
-            tout.setFont(new Font("Arial", Font.PLAIN, 15));
-            tout.setSize(300, 400);
-            tout.setLocation(700, 100);
-            tout.setLineWrap(true);
-            tout.setEditable(false);
-            c.add(tout);
-            resadd = new JTextArea();
-            resadd.setFont(new Font("Arial", Font.PLAIN, 15));
-            resadd.setSize(200, 75);
-            resadd.setLocation(780, 175);
-            resadd.setLineWrap(true);
-            c.add(resadd);
-*/
-
+        
         setVisible(true);
     }
 
@@ -315,33 +279,9 @@ class RegistrationPage
     {
         if (e.getSource() == sub) {
             if (term.isSelected()) {
-                String data1;
-                String data
-                        = "Name : "
-                        + tFname.getText() + "\n"
-                        + "Mobile : "
-                        + tLname.getText() + "\n";
-                if (male.isSelected())
-                    data1 = "Gender : Male"
-                            + "\n";
-                else
-                    data1 = "Gender : Female"
-                            + "\n";
-                String data2
-                        = "DOB : "
-                        + (String)date.getSelectedItem()
-                        + "/" + (String)month.getSelectedItem()
-                        + "/" + (String)year.getSelectedItem()
-                        + "\n";
-
-                String data3 = "Address : " + tadd.getText();
-                   /* tout.setText(data + data1 + data2 + data3);
-                    tout.setEditable(false);*/
                 res.setText("Registration Successfully..");
             }
             else {
-                   /* tout.setText("");
-                    resadd.setText("");*/
                 res.setText("Please accept the"
                         + " terms & conditions.");
             }
@@ -350,15 +290,15 @@ class RegistrationPage
         else if (e.getSource() == reset) {
             String def = "";
             tFname.setText(def);
-            tadd.setText(def);
             tLname.setText(def);
             res.setText(def);
-            tout.setText(def);
             term.setSelected(false);
             date.setSelectedIndex(0);
             month.setSelectedIndex(0);
             year.setSelectedIndex(0);
-            resadd.setText(def);
         }
     }
 }
+
+
+
