@@ -76,7 +76,7 @@ class RegistrationPage
         setBounds(300, 90, 900, 1000);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
-
+        metRep = false;
         c = getContentPane();
         c.setLayout(null);
 
