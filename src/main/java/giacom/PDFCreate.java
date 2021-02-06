@@ -4,6 +4,7 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.interactive.form.PDAcroForm;
 import org.apache.pdfbox.pdmodel.interactive.form.PDField;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -13,6 +14,7 @@ public class PDFCreate {
 
     public PDFCreate(String provider, String address1, String address2, User demoUser,
                      String socialSecurity, String startDate, String endDate){
+        patient = demoUser;
         try {
             PDDocument pDDocument = PDDocument.load(new File("./Georgia-HIPAA-Medical-Release-Form.pdf"));
             PDAcroForm pDAcroForm = pDDocument.getDocumentCatalog().getAcroForm();
@@ -28,7 +30,7 @@ public class PDFCreate {
             field = pDAcroForm.getField("Date of Birth");
             field.setValue(demoUser.getDob());
             field = pDAcroForm.getField("Social Security Number");
-            field.setValue(demoUser.getSocialSecurity());
+            field.setValue(socialSecurity);
 
             //check boxes
             field = pDAcroForm.getField("All medical records meaning every page in my record including but not limited to");
@@ -68,5 +70,15 @@ public class PDFCreate {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        if (Desktop.isDesktopSupported()) {
+            try {
+                File myFile = new File("./pdf-java-output.pdf");
+                Desktop.getDesktop().open(myFile);
+            } catch (IOException ex) {
+                // no application registered for PDFs
+            }
+        }
+
     }
 }

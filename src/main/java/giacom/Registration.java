@@ -6,5 +6,6 @@ public class Registration {
     {
         RegistrationPage f = new RegistrationPage();
         LoginPage l = new LoginPage();
+        RequestRecordsPage rr = new RequestRecordsPage();
     }
 }

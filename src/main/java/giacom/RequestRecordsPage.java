@@ -72,6 +72,7 @@ class RequestRecordsPage
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
 
+
         c = getContentPane();
         c.setLayout(null);
 
@@ -237,8 +238,8 @@ class RequestRecordsPage
 
         res = new JLabel("");
         res.setFont(new Font("Arial", Font.PLAIN, 20));
-        res.setSize(500, 25);
-        res.setLocation(100, 670);
+        res.setSize(900, 25);
+        res.setLocation(100, 680);
         c.add(res);
 
         setVisible(true);
@@ -251,7 +252,7 @@ class RequestRecordsPage
     {
         if (e.getSource() == sub) {
             if (agreeTerms.isSelected()) {
-                res.setText("Registration Successfully..");
+                res.setText("Registration Successfully.. Form emailed to provider");
                 User demoUser = new User("demouser", "123", "Demo Man", "01/01/2000",
                         "111-111-1111");
                 String startingDate = month.getSelectedItem().toString() + " " + date.getSelectedItem().toString() + " " +
