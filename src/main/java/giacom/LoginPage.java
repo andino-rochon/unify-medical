@@ -14,6 +14,8 @@ public class LoginPage extends JFrame implements ActionListener {
     private JLabel password;
     private JTextField tpassword;
     private JButton login;
+    private JLabel reg;
+    private JButton register;
     private JLabel res;
 
     public LoginPage() {
@@ -62,10 +64,23 @@ public class LoginPage extends JFrame implements ActionListener {
         login.addActionListener(this);
         con.add(login);
 
+        reg = new JLabel("Need an account?");
+        reg.setFont(new Font("Arial", Font.PLAIN, 20));
+        reg.setSize(100, 20);
+        reg.setLocation(200, 200);
+        con.add(reg);
+
+        register = new JButton("Sign up");
+        register.setFont(new Font("Arial", Font.PLAIN, 15));
+        register.setSize(100, 20);
+        register.setLocation(300, 200);
+        register.addActionListener(this);
+        con.add(register);
+
         res = new JLabel("");
         res.setFont(new Font("Arial", Font.PLAIN, 20));
         res.setSize(500, 25);
-        res.setLocation(50, 195);
+        res.setLocation(50, 225);
         con.add(res);
 
         setVisible(true);
@@ -83,6 +98,10 @@ public class LoginPage extends JFrame implements ActionListener {
                 //need to check for valid login info
                 res.setText("Login successful");
             }
+        } else if (e.getSource() == register) {
+            RegistrationPage f = new RegistrationPage();
+            setVisible(false);
         }
+
     }
 }
