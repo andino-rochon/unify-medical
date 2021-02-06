@@ -31,9 +31,15 @@ public class User {
     public String getDob() {
         return dob;
     }
-    public String getStreet() { return streetAdd;}
-    public String getCitStatZip() {return citStatZip;}
-    public String getGender() {return gender;}
+    public String getStreet() {
+        return streetAdd;
+    }
+    public String getCitStatZip() {
+        return citStatZip;
+    }
+    public String getGender() {
+        return gender;
+    }
 
 
 
