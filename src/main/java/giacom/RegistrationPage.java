@@ -1,5 +1,4 @@
 package giacom;
-
 // Java program to implement
 // a Simple Registration Form
 // using Java Swing
@@ -8,9 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-class RegistrationPage
-        extends JFrame
-        implements ActionListener {
+class RegistrationPage extends JFrame implements ActionListener {
 
     // Components of the Form
     private Container c;
@@ -292,7 +289,7 @@ class RegistrationPage
         res.setSize(500, 25);
         res.setLocation(100, 650);
         c.add(res);
-        
+
         setVisible(true);
     }
 
@@ -301,37 +298,38 @@ class RegistrationPage
     // by the user and act accordingly
     public void actionPerformed(ActionEvent e)
     {
-      if (e.getSource() == sub) {
-            if (metReq ==true) {
-                if (term.isSelected()) {
-                        res.setText("Registration Successfully..");
-                }
-                else {
-                        res.setText("Please accept the"
-                                + " terms & conditions.");
-                }
-           } else {
-                res.setText("Please answer all fields(Address Line 2 is optional)");
-           }
+        if (e.getSource() == sub) {
+        if (metReq ==true) {
+            if (term.isSelected()) {
+                res.setText("Registration Successfully..");
+            }
+            else {
+                res.setText("Please accept the"
+                        + " terms & conditions.");
+            }
+        } else {
+            res.setText("Please answer all fields(Address Line 2 is optional)");
         }
+    }
 
-        else if (e.getSource() == reset) {
-            String def = "";
-            tFname.setText(def);
-            tLname.setText(def);
-            addressL1.setText(def);
-            addressL2.setText(def);
-            city.setText(def);
-            state.setText(def);
-            zipC.setText(def);
-            username.setText(def);
-            password.setText(def);
-            res.setText(def);
-            term.setSelected(false);
-            date.setSelectedIndex(0);
-            month.setSelectedIndex(0);
-            year.setSelectedIndex(0);
-        }
+    else if (e.getSource() == reset) {
+        String def = "";
+        tFname.setText(def);
+        tLname.setText(def);
+        tAddressL1.setText(def);
+        tAddressL2.setText(def);
+        tcity.setText(def);
+        tstate.setText(def);
+        tzipC.setText(def);
+        tusername.setText(def);
+        tpassword.setText(def);
+        res.setText(def);
+        term.setSelected(false);
+        date.setSelectedIndex(0);
+        month.setSelectedIndex(0);
+        year.setSelectedIndex(0);
+        metReq = true;
+    }
     }
 }
 
