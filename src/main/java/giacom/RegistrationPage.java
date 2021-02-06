@@ -291,6 +291,13 @@ class RegistrationPage
             String def = "";
             tFname.setText(def);
             tLname.setText(def);
+            addressL1.setText(def);
+            addressL2.setText(def);
+            city.setText(def);
+            state.setText(def);
+            zipC.setText(def);
+            username.setText(def);
+            password.setText(def);
             res.setText(def);
             term.setSelected(false);
             date.setSelectedIndex(0);
