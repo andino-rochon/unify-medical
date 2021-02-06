@@ -251,27 +251,34 @@ class RequestRecordsPage
     public void actionPerformed(ActionEvent e)
     {
         if (e.getSource() == sub) {
-            if (agreeTerms.isSelected()) {
-                res.setText("Registration Successfully.. Form emailed to provider");
-                User  demoUser = new User("demouser", "123", "Demo Man", "01/01/2000",
-                        "872 this way", "athens,GA 30609", "Female");
-                String startingDate = month.getSelectedItem().toString() + " " + date.getSelectedItem().toString() + " " +
-                        year.getSelectedItem().toString();
-                String endingDate = month2.getSelectedItem().toString() + " " + date2.getSelectedItem().toString() + " " +
-                        year2.getSelectedItem().toString();
-                PDFCreate pdf = new PDFCreate(tProvider.getText(), tProAddress.getText(), tProAddress2.getText(),
-                        demoUser, tSocialSecurity.getText(), startingDate, endingDate);
-            }
-            else {
-                res.setText("Please accept the"
-                        + " terms & conditions.");
+            if (tProvider.getText().isEmpty() || tproEmailAddress.getText().isEmpty() || tProAddress.getText().isEmpty()
+                    || tProAddress2.getText().isEmpty() || tSocialSecurity.getText().isEmpty()) {
+                res.setText("Please input responses for all fields");
+            } else {
+                if (agreeTerms.isSelected()) {
+                    res.setText("Registration Successfully.. Form emailed to provider");
+                    User demoUser = new User("demouser", "123", "Demo Man", "01/01/2000",
+                            "872 this way", "athens,GA 30609", "Female");
+                    String startingDate = month.getSelectedItem().toString() + " " + date.getSelectedItem().toString() + " " +
+                            year.getSelectedItem().toString();
+                    String endingDate = month2.getSelectedItem().toString() + " " + date2.getSelectedItem().toString() + " " +
+                            year2.getSelectedItem().toString();
+                    PDFCreate pdf = new PDFCreate(tProvider.getText(), tProAddress.getText(), tProAddress2.getText(),
+                            demoUser, tSocialSecurity.getText(), startingDate, endingDate);
+                } else {
+                    res.setText("Please accept the"
+                            + " terms & conditions.");
+                }
             }
         }
 
         else if (e.getSource() == reset) {
             String def = "";
             tProvider.setText(def);
-            proAddress.setText(def);
+            tProAddress.setText(def);
+            tProAddress2.setText(def);
+            tproEmailAddress.setText(def);
+            tSocialSecurity.setText(def);
             res.setText(def);
             agreeTerms.setSelected(false);
             date.setSelectedIndex(0);
