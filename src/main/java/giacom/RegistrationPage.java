@@ -51,6 +51,7 @@ class RegistrationPage extends JFrame implements ActionListener {
     public String datBirth;
     public String usrName;
     public String pass;
+    public User u;
     // public int age; ->calculate age from datBirth
 
     private String dates[]
@@ -277,7 +278,7 @@ class RegistrationPage extends JFrame implements ActionListener {
         c.add(tpassword);
 
         pass = tpassword.getText();
-
+        u = new User(usrName, pass, name, datBirth, streetName, citStatZip,gend);
         term = new JCheckBox("Accept Terms And Conditions.");
         term.setFont(new Font("Arial", Font.PLAIN, 15));
         term.setSize(250, 20);
