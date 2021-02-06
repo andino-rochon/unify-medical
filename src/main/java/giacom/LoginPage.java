@@ -96,6 +96,7 @@ public class LoginPage extends JFrame implements ActionListener {
                 res.setText("Please answer all fields properly");
             } else {
                 //need to check for valid login info
+                checkForUser();
                 res.setText("Login successful");
                 setVisible(false);
                 DashBoard db = new DashBoard();
@@ -105,5 +106,9 @@ public class LoginPage extends JFrame implements ActionListener {
             setVisible(false);
         }
 
+    }
+
+    public void checkForUser(){
+        
     }
 }
