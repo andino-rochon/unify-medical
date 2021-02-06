@@ -253,8 +253,8 @@ class RequestRecordsPage
         if (e.getSource() == sub) {
             if (agreeTerms.isSelected()) {
                 res.setText("Registration Successfully.. Form emailed to provider");
-                User demoUser = new User("demouser", "123", "Demo Man", "01/01/2000",
-                        "111-111-1111");
+                User  demoUser = new User("demouser", "123", "Demo Man", "01/01/2000",
+                        "872 this way", "athens,GA 30609", "Female");
                 String startingDate = month.getSelectedItem().toString() + " " + date.getSelectedItem().toString() + " " +
                         year.getSelectedItem().toString();
                 String endingDate = month2.getSelectedItem().toString() + " " + date2.getSelectedItem().toString() + " " +
