@@ -94,9 +94,7 @@ class RegistrationPage extends JFrame implements ActionListener {
         tFname.setSize(190, 20);
         tFname.setLocation(200, 100);
         c.add(tFname);
-        if (tFname.getText().equals("")) {
-            metReq=false;
-        }
+
 
         Lname = new JLabel("Last Name");
         Lname.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -109,9 +107,7 @@ class RegistrationPage extends JFrame implements ActionListener {
         tLname.setSize(190, 20);
         tLname.setLocation(550, 100);
         c.add(tLname);
-        if (tLname.getText().equals("")) {
-            metReq=false;
-        }
+
 
         addressL1 = new JLabel("Address Line 1");
         addressL1.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -124,9 +120,7 @@ class RegistrationPage extends JFrame implements ActionListener {
         tAddressL1.setSize(640, 20);
         tAddressL1.setLocation(100, 160);
         c.add(tAddressL1);
-        if (tAddressL1.getText().equals("")) {
-            metReq=false;
-        }
+
 
         addressL2 = new JLabel("Address Line 2");
         addressL2.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -151,9 +145,7 @@ class RegistrationPage extends JFrame implements ActionListener {
         tcity.setSize(100, 20);
         tcity.setLocation(100, 280);
         c.add(tcity);
-        if (tcity.getText().equals("")) {
-            metReq=false;
-        }
+
 
         state = new JLabel("State/Province");
         state.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -166,9 +158,7 @@ class RegistrationPage extends JFrame implements ActionListener {
         tstate.setSize(100, 20);
         tstate.setLocation(100, 340);
         c.add(tstate);
-        if (tstate.getText().equals("")) {
-            metReq=false;
-        }
+
 
         zipC = new JLabel("Zip/Postal Code");
         zipC.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -181,9 +171,7 @@ class RegistrationPage extends JFrame implements ActionListener {
         tzipC.setSize(100, 20);
         tzipC.setLocation(100, 400);
         c.add(tzipC);
-        if (tzipC.getText().equals("")) {
-            metReq=false;
-        }
+
 
         gender = new JLabel("Gender");
         gender.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -245,9 +233,7 @@ class RegistrationPage extends JFrame implements ActionListener {
         tusername.setSize(290, 20);
         tusername.setLocation(450, 520);
         c.add(tusername);
-        if (tusername.getText().equals("")) {
-            metReq=false;
-        }
+
 
         password = new JLabel("Password:");
         password.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -260,9 +246,7 @@ class RegistrationPage extends JFrame implements ActionListener {
         tpassword.setSize(290, 20);
         tpassword.setLocation(200, 560);
         c.add(tpassword);
-        if (tpassword.getText().equals("")) {
-            metReq=false;
-        }
+
 
         term = new JCheckBox("Accept Terms And Conditions.");
         term.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -299,37 +283,35 @@ class RegistrationPage extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e)
     {
         if (e.getSource() == sub) {
-        if (metReq ==true) {
-            if (term.isSelected()) {
-                res.setText("Registration Successfully..");
+            if (tFname.getText().isEmpty() || tLname.getText().isEmpty() || tAddressL1.getText().isEmpty()
+                    || tcity.getText().isEmpty() || tstate.getText().isEmpty() || tzipC.getText().isEmpty()
+                    || tusername.getText().isEmpty() || tpassword.getText().isEmpty()){
+                res.setText("Please answer all fields(Address Line 2 is optional)");
+            } else{
+                if (term.isSelected()) {
+                    res.setText("Registration was Successful");
+                } else {
+                    res.setText("Please accept the terms & conditions.");
+                }
             }
-            else {
-                res.setText("Please accept the"
-                        + " terms & conditions.");
-            }
-        } else {
-            res.setText("Please answer all fields(Address Line 2 is optional)");
+        } else if (e.getSource() == reset) {
+            String def = "";
+            tFname.setText(def);
+            tLname.setText(def);
+            tAddressL1.setText(def);
+            tAddressL2.setText(def);
+            tcity.setText(def);
+            tstate.setText(def);
+            tzipC.setText(def);
+            tusername.setText(def);
+            tpassword.setText(def);
+            res.setText(def);
+            term.setSelected(false);
+            date.setSelectedIndex(0);
+            month.setSelectedIndex(0);
+            year.setSelectedIndex(0);
+            metReq = true;
         }
-    }
-
-    else if (e.getSource() == reset) {
-        String def = "";
-        tFname.setText(def);
-        tLname.setText(def);
-        tAddressL1.setText(def);
-        tAddressL2.setText(def);
-        tcity.setText(def);
-        tstate.setText(def);
-        tzipC.setText(def);
-        tusername.setText(def);
-        tpassword.setText(def);
-        res.setText(def);
-        term.setSelected(false);
-        date.setSelectedIndex(0);
-        month.setSelectedIndex(0);
-        year.setSelectedIndex(0);
-        metReq = true;
-    }
     }
 }
 

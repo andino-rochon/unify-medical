@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="unify-medical" />
+        <module name="pdf-java" />
       </profile>
     </annotationProcessing>
   </component>
