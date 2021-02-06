@@ -42,7 +42,15 @@ class RegistrationPage extends JFrame implements ActionListener {
     private JButton sub;
     private JButton reset;
     private JLabel res;
-    private boolean metReq;
+
+    public String name;
+    public String streetName;
+    public String citStatZip;
+    public String gend;
+    public String datBirth;
+    public String usrName;
+    public String pass;
+    // public int age; ->calculate age from datBirth
 
     private String dates[]
             = { "1", "2", "3", "4", "5",
@@ -73,7 +81,6 @@ class RegistrationPage extends JFrame implements ActionListener {
         setBounds(300, 90, 900, 1000);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
-        metReq = true;
         c = getContentPane();
         c.setLayout(null);
 
@@ -108,6 +115,7 @@ class RegistrationPage extends JFrame implements ActionListener {
         tLname.setLocation(550, 100);
         c.add(tLname);
 
+        name = tFname.getText() + " " + tLname.getText();
 
         addressL1 = new JLabel("Address Line 1");
         addressL1.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -310,7 +318,7 @@ class RegistrationPage extends JFrame implements ActionListener {
             date.setSelectedIndex(0);
             month.setSelectedIndex(0);
             year.setSelectedIndex(0);
-            metReq = true;
+            
         }
     }
 }
