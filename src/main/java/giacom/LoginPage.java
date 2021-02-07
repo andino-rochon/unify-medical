@@ -3,6 +3,10 @@ package giacom;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Scanner;
 
 public class LoginPage extends JFrame implements ActionListener {
 
@@ -17,6 +21,8 @@ public class LoginPage extends JFrame implements ActionListener {
     private JLabel reg;
     private JButton register;
     private JLabel res;
+
+    private User currentUser;
 
     public LoginPage() {
         setTitle("Login");
@@ -96,10 +102,17 @@ public class LoginPage extends JFrame implements ActionListener {
                 res.setText("Please answer all fields properly");
             } else {
                 //need to check for valid login info
-                checkForUser();
-                res.setText("Login successful");
-                setVisible(false);
-                DashBoard db = new DashBoard();
+                try{
+                    if(checkForUser()) {
+                        res.setText("Login successful");
+                        setVisible(false);
+                        DashBoard db = new DashBoard();
+                    }else {
+                        res.setText("Incorrect username or password");
+                    }
+                } catch (IOException r) {
+                    r.printStackTrace();
+                }
             }
         } else if (e.getSource() == register) {
             RegistrationPage f = new RegistrationPage();
@@ -108,7 +121,26 @@ public class LoginPage extends JFrame implements ActionListener {
 
     }
 
-    public void checkForUser(){
-        
+    public boolean checkForUser() throws FileNotFoundException {
+
+        Scanner file = new Scanner(new File("./UserData.txt"));
+        String userInfo = file.nextLine();
+        System.out.println(userInfo);
+        while(file.hasNextLine()){
+            if(userInfo.substring(0, userInfo.indexOf(":")).equals(tusername.getText().toString())){
+                userInfo = userInfo.substring(userInfo.indexOf(":") + 1);
+                if(userInfo.substring(0, userInfo.indexOf(":")).equals(tpassword.getText().toString())){
+                    userInfo = userInfo.substring(userInfo.indexOf(":") + 1);
+                    readInfo(userInfo);
+                    return true;
+                }
+            }
+            userInfo = file.nextLine();
+        }
+        return false;
+    }
+
+    public void readInfo(String userInfo){
+
     }
 }

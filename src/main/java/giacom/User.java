@@ -31,6 +31,11 @@ public class User {
     public String getDob() {
         return dob;
     }
+
+    public String getStreetAdd() {
+        return streetAdd;
+    }
+
     public String getStreet() {
         return streetAdd;
     }
@@ -41,8 +46,31 @@ public class User {
         return gender;
     }
 
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
 
+    public void setCitStatZip(String citStatZip) {
+        this.citStatZip = citStatZip;
+    }
 
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setStreetAdd(String streetAdd) {
+        this.streetAdd = streetAdd;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }
