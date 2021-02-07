@@ -72,7 +72,6 @@ class RequestRecordsPage
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
 
-
         c = getContentPane();
         c.setLayout(null);
 
@@ -265,6 +264,8 @@ class RequestRecordsPage
                             year2.getSelectedItem().toString();
                     PDFCreate pdf = new PDFCreate(tProvider.getText(), tProAddress.getText(), tProAddress2.getText(),
                             demoUser, tSocialSecurity.getText(), startingDate, endingDate);
+                    setVisible(false);
+                    DashBoard db = new DashBoard();
                 } else {
                     res.setText("Please accept the"
                             + " terms & conditions.");

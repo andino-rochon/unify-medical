@@ -5,6 +5,5 @@ public class Welcome {
             throws Exception
     {
         LoginPage l = new LoginPage();
-        //RequestRecordsPage rr = new RequestRecordsPage();
     }
 }
