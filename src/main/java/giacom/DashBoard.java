@@ -33,7 +33,7 @@ class DashBoard
     {
         this.currentUser = currentUser;
         setTitle("DashBoard");
-        setBounds(300, 90, 600, 600);
+        setBounds(300, 90, 600, 700);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
 
@@ -61,10 +61,10 @@ class DashBoard
         checkRecords.addActionListener(this);
         c.add(checkRecords);
 
-        logOut = new JButton("Login");
+        logOut = new JButton("Logout");
         logOut.setFont(new Font("Arial", Font.PLAIN, 15));
         logOut.setSize(100, 20);
-        logOut.setLocation(225, 500);
+        logOut.setLocation(225, 600);
         logOut.addActionListener(this);
         c.add(logOut);
 
@@ -80,6 +80,7 @@ class DashBoard
             RequestRecordsPage rr = new RequestRecordsPage(currentUser);
             setVisible(false);
         } else if (e.getSource() == logOut) {
+            JOptionPane.showMessageDialog(null, "Logout Successful");
             setVisible(false);
             LoginPage l = new LoginPage();
         }
