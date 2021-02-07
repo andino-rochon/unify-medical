@@ -22,7 +22,7 @@ public class LoginPage extends JFrame implements ActionListener {
     private JButton register;
     private JLabel res;
 
-    private User currentUser;
+    private User currentUser = new User();
 
     public LoginPage() {
         setTitle("Login");
@@ -124,23 +124,32 @@ public class LoginPage extends JFrame implements ActionListener {
     public boolean checkForUser() throws FileNotFoundException {
 
         Scanner file = new Scanner(new File("./UserData.txt"));
-        String userInfo = file.nextLine();
-        System.out.println(userInfo);
+        String userInfo;
         while(file.hasNextLine()){
+            userInfo = file.nextLine();
             if(userInfo.substring(0, userInfo.indexOf(":")).equals(tusername.getText().toString())){
+                currentUser.setUsername(userInfo.substring(0, userInfo.indexOf(":")));
                 userInfo = userInfo.substring(userInfo.indexOf(":") + 1);
                 if(userInfo.substring(0, userInfo.indexOf(":")).equals(tpassword.getText().toString())){
+                    currentUser.setPassword(userInfo.substring(0, userInfo.indexOf(":")));
                     userInfo = userInfo.substring(userInfo.indexOf(":") + 1);
                     readInfo(userInfo);
                     return true;
                 }
             }
-            userInfo = file.nextLine();
         }
         return false;
     }
 
     public void readInfo(String userInfo){
-
+        currentUser.setName(userInfo.substring(0, userInfo.indexOf(":")));
+        userInfo = userInfo.substring(userInfo.indexOf(":") + 1);
+        currentUser.setDob(userInfo.substring(0, userInfo.indexOf(":")));
+        userInfo = userInfo.substring(userInfo.indexOf(":") + 1);
+        currentUser.setStreetAdd(userInfo.substring(0, userInfo.indexOf(":")));
+        userInfo = userInfo.substring(userInfo.indexOf(":") + 1);
+        currentUser.setCitStatZip(userInfo.substring(0, userInfo.indexOf(":")));
+        userInfo = userInfo.substring(userInfo.indexOf(":") + 1);
+        currentUser.setGender(userInfo.substring(0, userInfo.indexOf(";")));
     }
 }
