@@ -71,7 +71,7 @@ public class LoginPage extends JFrame implements ActionListener {
         con.add(login);
 
         reg = new JLabel("Need an account?");
-        reg.setFont(new Font("Arial", Font.PLAIN, 15));
+        reg.setFont(new Font("Arial", Font.PLAIN, 20));
         reg.setSize(150, 20);
         reg.setLocation(170, 200);
         con.add(reg);
