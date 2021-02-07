@@ -286,8 +286,9 @@ class RequestRecordsPage
             date.setSelectedIndex(0);
             month.setSelectedIndex(0);
             year.setSelectedIndex(0);
+            setVisible(false);
+            DashBoard d = new DashBoard(currentUser);
         }
-
 
     }
 

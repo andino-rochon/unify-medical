@@ -24,7 +24,7 @@ class DashBoard
 
     private JButton requestRecords;
     private JButton checkRecords;
-    private JLabel res;
+    private JButton logOut;
 
     private User currentUser;
     // constructor, to initialize the components
@@ -61,11 +61,12 @@ class DashBoard
         checkRecords.addActionListener(this);
         c.add(checkRecords);
 
-        res = new JLabel("");
-        res.setFont(new Font("Arial", Font.PLAIN, 20));
-        res.setSize(900, 25);
-        res.setLocation(100, 70);
-        c.add(res);
+        logOut = new JButton("Login");
+        logOut.setFont(new Font("Arial", Font.PLAIN, 15));
+        logOut.setSize(100, 20);
+        logOut.setLocation(225, 500);
+        logOut.addActionListener(this);
+        c.add(logOut);
 
         setVisible(true);
     }
@@ -78,6 +79,9 @@ class DashBoard
         if (e.getSource() == requestRecords) {
             RequestRecordsPage rr = new RequestRecordsPage(currentUser);
             setVisible(false);
+        } else if (e.getSource() == logOut) {
+            setVisible(false);
+            LoginPage l = new LoginPage();
         }
     }
 
