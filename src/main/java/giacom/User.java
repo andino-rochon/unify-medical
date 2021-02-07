@@ -9,6 +9,10 @@ public class User {
     private String citStatZip;
     private String gender;
 
+    public User(){
+
+    }
+
     public User(String username, String password, String name, String dob, String streetAddress, String citStaZip, String gender){
         this.username = username;
         this.password = password;
