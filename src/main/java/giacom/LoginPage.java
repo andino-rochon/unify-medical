@@ -106,7 +106,7 @@ public class LoginPage extends JFrame implements ActionListener {
                     if(checkForUser()) {
                         res.setText("Login successful");
                         setVisible(false);
-                        DashBoard db = new DashBoard();
+                        DashBoard db = new DashBoard(currentUser);
                     }else {
                         res.setText("Incorrect username or password");
                     }

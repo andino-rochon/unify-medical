@@ -42,6 +42,8 @@ class RequestRecordsPage
     private JLabel res;
     private boolean metReq;
 
+    private User currentUser;
+
     private String dates[]
             = { "1", "2", "3", "4", "5",
             "6", "7", "8", "9", "10",
@@ -65,8 +67,9 @@ class RequestRecordsPage
 
     // constructor, to initialize the components
     // with default values.
-    public RequestRecordsPage()
+    public RequestRecordsPage(User currentUser)
     {
+        this.currentUser = currentUser;
         setTitle("Request Records Form");
         setBounds(300, 90, 900, 800);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -256,16 +259,14 @@ class RequestRecordsPage
             } else {
                 if (agreeTerms.isSelected()) {
                     res.setText("Registration Successfully.. Form emailed to provider");
-                    User demoUser = new User("demouser", "123", "Demo Man", "01/01/2000",
-                            "872 this way", "athens,GA 30609", "Female");
                     String startingDate = month.getSelectedItem().toString() + " " + date.getSelectedItem().toString() + " " +
                             year.getSelectedItem().toString();
                     String endingDate = month2.getSelectedItem().toString() + " " + date2.getSelectedItem().toString() + " " +
                             year2.getSelectedItem().toString();
                     PDFCreate pdf = new PDFCreate(tProvider.getText(), tProAddress.getText(), tProAddress2.getText(),
-                            demoUser, tSocialSecurity.getText(), startingDate, endingDate);
+                            currentUser, tSocialSecurity.getText(), startingDate, endingDate);
                     setVisible(false);
-                    DashBoard db = new DashBoard();
+                    DashBoard db = new DashBoard(currentUser);
                 } else {
                     res.setText("Please accept the"
                             + " terms & conditions.");
