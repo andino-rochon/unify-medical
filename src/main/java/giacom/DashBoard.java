@@ -18,10 +18,12 @@ class DashBoard
     private JButton requestRecords;
     private JLabel res;
 
+    private User currentUser;
     // constructor, to initialize the components
     // with default values.
-    public DashBoard()
+    public DashBoard(User currentUser)
     {
+        this.currentUser = currentUser;
         setTitle("DashBoard");
         setBounds(300, 90, 600, 200);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -52,7 +54,7 @@ class DashBoard
     public void actionPerformed(ActionEvent e)
     {
         if (e.getSource() == requestRecords) {
-            RequestRecordsPage rr = new RequestRecordsPage();
+            RequestRecordsPage rr = new RequestRecordsPage(currentUser);
             setVisible(false);
         }
     }
