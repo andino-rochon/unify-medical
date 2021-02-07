@@ -212,7 +212,7 @@ class RegistrationPage extends JFrame implements ActionListener {
         otherGen.setFont(new Font("Arial", Font.PLAIN, 15));
         otherGen.setSelected(true);
         otherGen.setSize(75, 20);
-        otherGen.setLocation(350, 440);
+        otherGen.setLocation(360, 440);
         c.add(otherGen);
 
         gengp = new ButtonGroup();
@@ -337,8 +337,10 @@ class RegistrationPage extends JFrame implements ActionListener {
                 res.setText("Please answer all fields(Address Line 2 is optional)");
             } else{
                 if (term.isSelected()) {
-                    res.setText("Registration was Successful");
                     saveUserData();
+                    JOptionPane.showMessageDialog(null, "Registration was Successful");
+                    LoginPage l = new LoginPage();
+                    setVisible(false);
                 } else {
                     res.setText("Please accept the terms & conditions.");
                 }
