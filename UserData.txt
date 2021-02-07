@@ -1,2 +1,5 @@
 demouser:123:Joe Bob:Apr 10 2000:202 Prince Ave:Athens, GA 30189:Male;
 andino.rochon@gmail.com:hackathon:Andino Rochon:Apr 10 2000:204 Mayglen Ct:Woodstock,GA 30189:Male;
+home@gmail.com:ugahacks6:Marc Dylan:Jan 1 1995:456 Before St:Atlanta,GA 30981:Male;
+dyland00@uga.edu:ugahacks6:Dylan Roland:feb 9 1999:345 Prince Ave:Athens,GA 30189:Male;
+user@uga.edu:123:Dylan Pue:Jan 1 1995:345 Due Streert:Athens,GA 30189:Male;
