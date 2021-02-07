@@ -306,7 +306,7 @@ class RegistrationPage extends JFrame implements ActionListener {
         acct = new JLabel("Already have an account?");
         acct.setFont(new Font("Arial", Font.PLAIN, 15));
         acct.setSize(180, 20);
-        acct.setLocation(150, 660);
+        acct.setLocation(50, 660);
         c.add(acct);
 
         login = new JButton("Login");
