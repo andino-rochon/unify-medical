@@ -44,6 +44,8 @@ class RegistrationPage extends JFrame implements ActionListener {
     private JCheckBox term;
     private JButton sub;
     private JButton reset;
+    private JLabel acct;
+    private JButton login;
     private JLabel res;
 
     public String name;
@@ -301,10 +303,23 @@ class RegistrationPage extends JFrame implements ActionListener {
         reset.addActionListener(this);
         c.add(reset);
 
+        acct = new JLabel("Already have an account?");
+        acct.setFont(new Font("Arial", Font.PLAIN, 15));
+        acct.setSize(180, 20);
+        acct.setLocation(150, 660);
+        c.add(acct);
+
+        login = new JButton("Login");
+        login.setFont(new Font("Arial", Font.PLAIN, 15));
+        login.setSize(100, 20);
+        login.setLocation(330, 660);
+        login.addActionListener(this);
+        c.add(login);
+
         res = new JLabel("");
         res.setFont(new Font("Arial", Font.PLAIN, 20));
         res.setSize(500, 25);
-        res.setLocation(100, 650);
+        res.setLocation(100, 690);
         c.add(res);
 
         setVisible(true);
@@ -344,7 +359,9 @@ class RegistrationPage extends JFrame implements ActionListener {
             date.setSelectedIndex(0);
             month.setSelectedIndex(0);
             year.setSelectedIndex(0);
-
+        } else if (e.getSource() == login) {
+            LoginPage l = new LoginPage();
+            setVisible(false);
         }
     }
 
